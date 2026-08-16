@@ -1,0 +1,13 @@
+{
+  "name": "PLAYED — Play Your Part",
+  "short_name": "PLAYED",
+  "description": "A playable vaccine against misinformation: play all four roles inside a viral lie, then train on real documented cases.",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#FAF5F1",
+  "theme_color": "#A41F13",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}

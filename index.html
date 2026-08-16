@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PLAYED — Don’t get played. Play your part.</title>
+  <meta name="description" content="PLAYED is a playable vaccine against misinformation. Step inside a viral lie, play all five roles — including your own family group chat — then train on 51 real, documented cases. English & বাংলা." />
+  <meta name="theme-color" content="#A41F13" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <!-- social cards -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="PLAYED — Don’t get played. Play your part." />
+  <meta property="og:description" content="A playable vaccine against misinformation: forge the lie, run the algorithm, get profiled, hunt it down — then defend your own family group chat. Free, offline, English & বাংলা." />
+  <meta property="og:image" content="icon.svg" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="PLAYED — Don’t get played. Play your part." />
+  <meta name="twitter:description" content="A 12-minute playable vaccine against misinformation, built on inoculation research." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    "name": "PLAYED",
+    "description": "A playable simulation teaching media and information literacy through inoculation theory: players act as the Creator, the Algorithm, the Target and the Guardian of one viral lie.",
+    "learningResourceType": "Simulation game",
+    "educationalLevel": "Youth 15-30",
+    "inLanguage": ["en", "bn"],
+    "isAccessibleForFree": true,
+    "teaches": "Media and Information Literacy, misinformation resistance, verification skills"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=2026.2" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+</head>
+<body>
+
+  <!-- ===== Preloader ===== -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader__inner">
+      <div class="preloader__logo">PLAYED<span>.</span></div>
+      <div class="preloader__bar"><i></i></div>
+      <div class="preloader__hint" data-i18n="preloader.hint">loading the lie…</div>
+    </div>
+  </div>
+
+  <!-- ===== Ambient layers ===== -->
+  <div class="progress" aria-hidden="true"><i id="progress-bar"></i></div>
+  <canvas id="net-canvas" aria-hidden="true"></canvas>
+  <div class="noise" aria-hidden="true"></div>
+
+  <!-- ===== "vaccine passed to you" banner (?via=) ===== -->
+  <div class="via-banner" id="via-banner" hidden>
+    <span data-i18n="via.text">A friend passed you the vaccine. Twelve minutes to build immunity.</span>
+    <a href="#simulation" class="via-banner__go" id="via-go" data-i18n="via.start">Start</a>
+    <button class="via-banner__x" id="via-close" aria-label="Dismiss">✕</button>
+  </div>
+
+  <!-- ===== Nav ===== -->
+  <nav class="nav" id="nav">
+    <a class="nav__logo" href="#top">PLAYED<span>.</span></a>
+    <ul class="nav__links" id="nav-links">
+      <li><a href="#threat" data-i18n="nav.threat">The Threat</a></li>
+      <li><a href="#roles" data-i18n="nav.roles">The Roles</a></li>
+      <li><a href="#simulation" data-i18n="nav.sim">The Simulation</a></li>
+      <li><a href="#hall" data-i18n="nav.hall">Hall of Lies</a></li>
+      <li><a href="#communities" data-i18n="nav.communities">Who We Serve</a></li>
+      <li><a href="#guardians" data-i18n="nav.guardians">Guardians</a></li>
+    </ul>
+    <button class="lang-toggle" id="lang-toggle" aria-label="বাংলায় দেখো">বাংলা</button>
+    <a class="btn btn--small btn--primary magnetic" href="#simulation" data-i18n="nav.cta">▶ Play your part</a>
+    <button class="nav__burger" id="nav-burger" aria-label="Open menu"><i></i><i></i><i></i></button>
+  </nav>
+
+  <!-- ===== Hero ===== -->
+  <header class="hero" id="top">
+    <div class="hero__3d" id="hero-3d" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <p class="hero__kicker reveal" data-i18n="hero.kicker">MEDIA &amp; INFORMATION LITERACY — BUILT IN BANGLADESH, MADE FOR EVERYONE</p>
+      <h1 class="hero__title">
+        <span class="hero__line reveal d1" data-i18n="hero.t1">You’ve been</span>
+        <span class="hero__line reveal d2"><span class="glitch hero__accent" data-text="PLAYED." data-i18n="hero.t2">PLAYED.</span></span>
+      </h1>
+      <p class="hero__sub reveal d3" data-i18n="hero.sub">
+        Behind every post, four parts are being played — the <b class="c-creator">creator</b> who forges it,
+        the <b class="c-algo">algorithm</b> that feeds it, the <b class="c-target">target</b> who believes it,
+        and the <b class="c-guardian">guardian</b> who stops it. Step inside one viral lie.
+        Play all four — then play your own part.
+      </p>
+      <div class="hero__cta reveal d4">
+        <a href="#simulation" class="btn btn--primary btn--big magnetic" data-i18n="hero.cta1">▶ Enter the simulation</a>
+        <a href="#hall" class="btn btn--ghost btn--big magnetic" data-i18n="hero.cta2">See 51 real cases</a>
+      </div>
+      <p class="hero__meta reveal d5" data-i18n="hero.meta">5 roles · ~15 minutes · no login · works offline · free forever</p>
+    </div>
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track" id="ticker-track">
+        <span>“They’re eating the pets” <em>— outrage bait · US, 2024</em></span>
+        <span>“পদ্মা সেতুতে মানুষের মাথা লাগবে” <em>— fear rumour · Bangladesh, 2019</em></span>
+        <span>“Explosion near the Pentagon” <em>— AI image · 2023</em></span>
+        <span>“Turn $50 into $5,000 by Friday” <em>— task scam · 2023–25</em></span>
+        <span>“The 15-minute city is a prison” <em>— conspiracy framing · 2023</em></span>
+        <span>“Doctors HATE this trick” <em>— false authority</em></span>
+        <span>“I’m not voting this time, save it for November” <em>— voice deepfake · 2024</em></span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== 01 · The Threat ===== -->
+    <section class="section threat" id="threat">
+      <header class="section__head">
+        <p class="section__kicker reveal" data-i18n="threat.kicker">01 — THE THREAT</p>
+        <h2 class="section__title reveal d1" data-i18n="threat.title">The lie is faster<br /><em class="accent">than the truth.</em></h2>
+      </header>
+      <div class="stats">
+        <article class="stat reveal">
+          <div class="stat__num"><span class="count" data-count="6" data-suffix="×">0</span></div>
+          <p class="stat__label">faster — how quickly false news reaches people compared to the truth</p>
+          <p class="stat__src">Vosoughi et al., Science (2018)</p>
+        </article>
+        <article class="stat reveal d1">
+          <div class="stat__num"><span class="count" data-count="85" data-suffix="%">0</span></div>
+          <p class="stat__label">of people worry about the impact of disinformation on their country</p>
+          <p class="stat__src">UNESCO–Ipsos survey (2023)</p>
+        </article>
+        <article class="stat reveal d2">
+          <div class="stat__num"><span class="count" data-count="96" data-suffix="%">0</span></div>
+          <p class="stat__label">of students failed to check who was really behind a website they trusted</p>
+          <p class="stat__src">Stanford History Education Group</p>
+        </article>
+        <article class="stat reveal d3">
+          <div class="stat__num"><span class="count" data-count="5" data-suffix="×">0</span></div>
+          <p class="stat__label">the weight Facebook’s algorithm gave an “angry” reaction versus a like</p>
+          <p class="stat__src">The Facebook Files, WSJ (2021)</p>
+        </article>
+      </div>
+      <blockquote class="threat__quote reveal">
+        <p>“You can’t fact-check every lie on the internet.<br />
+        But you can <em class="accent">vaccinate the mind</em> that reads it.”</p>
+        <footer>— the idea behind PLAYED, built on <b>inoculation theory</b>: expose people to a weakened dose of manipulation, and they build lasting resistance.</footer>
+      </blockquote>
+    </section>
+
+    <!-- ===== 02 · The Roles ===== -->
+    <section class="section roles" id="roles">
+      <header class="section__head">
+        <p class="section__kicker reveal" data-i18n="roles.kicker">02 — THE IDEA</p>
+        <h2 class="section__title reveal d1" data-i18n="roles.title">One lie.<br /><em class="accent">Four chairs.</em></h2>
+        <p class="section__sub reveal d2" data-i18n="roles.sub">
+          Most media-literacy training lectures you from the outside. PLAYED puts you <i>inside</i> —
+          you sit in every chair around a single piece of misinformation, and each chair teaches you
+          something a lecture never could.
+        </p>
+      </header>
+      <div class="roles__grid">
+        <article class="role reveal" data-role="creator" tabindex="0">
+          <div class="role__num">01</div>
+          <div class="role__icon" data-icon="pen"></div>
+          <h3 class="role__name" data-i18n="role.creator.name">The Creator</h3>
+          <p class="role__desc" data-i18n="role.creator.desc">Forge a viral lie using the twelve manipulation techniques documented in misinformation research — in a sandbox, where it can’t hurt anyone.</p>
+          <div class="role__tag">inoculation · prebunking</div>
+        </article>
+        <article class="role reveal d1" data-role="algo" tabindex="0">
+          <div class="role__num">02</div>
+          <div class="role__icon" data-icon="bot"></div>
+          <h3 class="role__name" data-i18n="role.algo.name">The Algorithm</h3>
+          <p class="role__desc" data-i18n="role.algo.desc">Become the recommendation engine — with the real leaked ranking weights. Maximize engagement, count the ad money, watch public trust fall.</p>
+          <div class="role__tag">AI literacy · systems thinking</div>
+        </article>
+        <article class="role reveal d2" data-role="target" tabindex="0">
+          <div class="role__num">03</div>
+          <div class="role__icon" data-icon="target"></div>
+          <h3 class="role__name" data-i18n="role.target.name">The Target</h3>
+          <p class="role__desc" data-i18n="role.target.desc">Scroll a feed built to read you. It maps your triggers in seconds, escalates what you like — then shows you everything it chose to hide from you.</p>
+          <div class="role__tag">personalization · self-awareness</div>
+        </article>
+        <article class="role reveal d3" data-role="guardian" tabindex="0">
+          <div class="role__num">04</div>
+          <div class="role__icon" data-icon="shield"></div>
+          <h3 class="role__name" data-i18n="role.guardian.name">The Guardian</h3>
+          <p class="role__desc" data-i18n="role.guardian.desc">Five real, documented viral posts. A fact-checker’s toolkit. A share counter that keeps climbing while you verify. Make the call.</p>
+          <div class="role__tag">verification · real skills</div>
+        </article>
+      </div>
+      <div class="roles__fifth reveal">
+        <div class="roles__fifth-ico" data-icon="message"></div>
+        <div>
+          <h3 data-i18n="role.fifth.name">…and a fifth chair the theory doesn’t cover: your real life.</h3>
+          <p data-i18n="role.fifth.desc">The four roles teach you how a lie <i>works</i>. <b>The Group Chat</b> is where you’ll actually face it — in the closed family and community groups where most misinformation in Bangladesh and South Asia really spreads, carried by people you love and can’t block. Being right isn’t enough there. You have to be right <i>with respect</i>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 03 · The Simulation (dark band) ===== -->
+    <div class="band band--dark" id="simulation">
+      <section class="section sim-section">
+        <header class="section__head">
+          <p class="section__kicker reveal" data-i18n="sim.kicker">03 — THE SIMULATION</p>
+          <h2 class="section__title reveal d1" data-i18n="sim.title">Don’t watch the story.<br /><em class="accent">Play it.</em></h2>
+        </header>
+        <div class="sim reveal" id="sim">
+          <div class="sim__hud">
+            <div class="sim__chapters" id="sim-chapters">
+              <button class="sim-chip" data-ch="1"><span class="n">01</span><span data-i18n="chip.creator">Creator</span></button>
+              <button class="sim-chip" data-ch="2"><span class="n">02</span><span data-i18n="chip.algo">Algorithm</span></button>
+              <button class="sim-chip" data-ch="3"><span class="n">03</span><span data-i18n="chip.target">Target</span></button>
+              <button class="sim-chip" data-ch="4"><span class="n">04</span><span data-i18n="chip.guardian">Guardian</span></button>
+              <button class="sim-chip" data-ch="5"><span class="n">05</span><span data-i18n="chip.groupchat">Group Chat</span></button>
+              <button class="sim-chip sim-chip--train" data-ch="6"><span class="n">∞</span><span data-i18n="chip.train">Training</span></button>
+            </div>
+            <div class="sim__score"><span data-i18n="sim.score">MIL SCORE</span> <b id="sim-score">0</b></div>
+          </div>
+          <div class="sim__stage" id="sim-stage" aria-live="polite"><!-- rendered by js/game.js --></div>
+        </div>
+        <p class="sim__note reveal" data-i18n="sim.note">The simulation’s posts are fictional recreations of documented misinformation patterns. The techniques — and the Guardian’s five cases — are real.</p>
+      </section>
+    </div>
+
+    <!-- ===== 04 · Verify Lab ===== -->
+    <section class="section lab" id="lab">
+      <header class="section__head">
+        <p class="section__kicker reveal" data-i18n="lab.kicker">04 — THE VERIFY LAB</p>
+        <h2 class="section__title reveal d1" data-i18n="lab.title">Every tool in the game<br /><em class="accent">is real outside it.</em></h2>
+        <p class="section__sub reveal d2" data-i18n="lab.sub">The Guardian’s toolkit mirrors free, real-world verification techniques. Finish the simulation and the Lab teaches you to use each one tonight, on your own feed.</p>
+      </header>
+      <div class="lab__grid">
+        <article class="tool reveal">
+          <div class="tool__glyph" data-icon="scan"></div>
+          <h3>Source X-Ray</h3>
+          <p>Who is really behind this page? Domain age, funding trail, about-page red flags — a 30-second background check for any website.</p>
+        </article>
+        <article class="tool reveal d1">
+          <div class="tool__glyph" data-icon="search"></div>
+          <h3>Reverse Lens</h3>
+          <p>Where has this image lived before? Trace a photo’s history and catch old pictures wearing new captions — like the flood shark, recycled since 2011.</p>
+        </article>
+        <article class="tool reveal d2">
+          <div class="tool__glyph" data-icon="book"></div>
+          <h3>Lateral Reader</h3>
+          <p>Open the tabs a professional fact-checker would. Leave the page, read <i>around</i> it, and see what the rest of the internet says.</p>
+        </article>
+        <article class="tool reveal d3">
+          <div class="tool__glyph" data-icon="sparkles"></div>
+          <h3>Synth-Detect</h3>
+          <p>AI images leave fingerprints — hands, lettering, melting edges, missing witnesses. The Pentagon “explosion” fell to exactly these tells.</p>
+        </article>
+      </div>
+      <div class="lab__terminal reveal" aria-hidden="true">
+        <div class="lab__terminal-bar"><i></i><i></i><i></i><span>guardian@played:~/verify</span></div>
+        <pre id="lab-terminal-body">$ <span class="t-cmd">reverse-lens</span> ./viral_flood_shark.jpg</pre>
+      </div>
+    </section>
+
+    <!-- ===== 05 · Hall of Lies (dark band) ===== -->
+    <div class="band band--dark" id="hall">
+      <section class="section hall">
+        <header class="section__head">
+          <p class="section__kicker reveal" data-i18n="hall.kicker">05 — THE HALL OF LIES</p>
+          <h2 class="section__title reveal d1" data-i18n="hall.title">51 documented cases.<br /><em class="accent">One planet.</em></h2>
+          <p class="section__sub reveal d2" data-i18n="hall.sub">
+            Every case below is real and publicly documented — from the Pentagon AI image to the Padma
+            Bridge rumour. Red marks are lies. Cream marks are true stories that <i>sound</i> fake —
+            because cynicism is not literacy.
+          </p>
+        </header>
+        <div class="hall__globe-wrap reveal" id="globe-wrap">
+          <canvas id="globe-canvas" aria-label="Rotating globe plotting documented misinformation cases"></canvas>
+          <div class="hall__globe-hint" data-i18n="hall.hint">drag to spin · <b class="hint-red">●</b> documented lie · <b class="hint-cream">●</b> actually true</div>
+        </div>
+        <div class="hall__filters reveal" id="hall-filters" role="group" aria-label="Filter cases by type"></div>
+        <div class="hall__grid" id="hall-grid"></div>
+        <div class="hall__train reveal">
+          <p data-i18n="hall.trainq">Think you can tell them apart at speed?</p>
+          <button class="btn btn--primary btn--big magnetic" id="hall-train-btn" data-i18n="hall.trainbtn">∞ Enter Training Mode</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===== 06 · Who We Serve ===== -->
+    <section class="section communities" id="communities">
+      <header class="section__head">
+        <p class="section__kicker reveal" data-i18n="comm.kicker">06 — WHO WE SERVE</p>
+        <h2 class="section__title reveal d1" data-i18n="comm.title">Not “global youth.”<br /><em class="accent">These people, by name.</em></h2>
+        <p class="section__sub reveal d2" data-i18n="comm.sub">Generic reach is what loses. PLAYED Guardians is built for the specific communities that misinformation actually targets in Bangladesh and South Asia — and for the ones media-literacy programs usually skip.</p>
+      </header>
+      <div class="comm__grid" id="comm-grid"></div>
+    </section>
+
+    <!-- ===== 07 · PLAYED Guardians (the program) ===== -->
+    <section class="section guardians" id="guardians">
+      <header class="section__head">
+        <p class="section__kicker reveal" data-i18n="guard.kicker">07 — THE PROGRAM</p>
+        <h2 class="section__title reveal d1" data-i18n="guard.title">The game is the tool.<br /><em class="accent">Youth are the delivery.</em></h2>
+        <p class="section__sub reveal d2" data-i18n="guard.sub">A gorgeous website doesn’t reach the youth the internet forgets — <b>people do</b>. PLAYED Guardians turns every player into a trained peer educator who carries it into the rooms where lies actually spread: classrooms, factory floors, and their own family group chats.</p>
+      </header>
+
+      <div class="guard__loop">
+        <article class="gstep reveal">
+          <div class="gstep__n">01</div>
+          <h3 data-i18n="guard.s1.t">Play &amp; get trained</h3>
+          <p data-i18n="guard.s1.d">A young person plays all five chairs in ~15 minutes and earns a Guardian passport. The Group Chat chapter rehearses the exact conversation they’ll have at home.</p>
+        </article>
+        <article class="gstep reveal d1">
+          <div class="gstep__n">02</div>
+          <h3 data-i18n="guard.s2.t">Run a 20-minute session</h3>
+          <p data-i18n="guard.s2.d">With a one-page facilitator guide and an offline copy on a phone or USB, they run PLAYED for a college class, a worker group, or a youth club — no internet, no cost.</p>
+        </article>
+        <article class="gstep reveal d2">
+          <div class="gstep__n">03</div>
+          <h3 data-i18n="guard.s3.t">Bring it home</h3>
+          <p data-i18n="guard.s3.d">They drop the printable Bangla prebunk cards into their family group the next time a rumour arrives — becoming their household’s first line of defence.</p>
+        </article>
+      </div>
+
+      <div class="guard__multiply reveal">
+        <p class="guard__multiply-lead" data-i18n="guard.mult.lead">Each Guardian pledges to train <b>five more</b>, offline. That is how a game becomes a movement:</p>
+        <div class="mult-chain">
+          <div class="mult-node"><b>1</b><span>you</span></div>
+          <div class="mult-arrow">→</div>
+          <div class="mult-node"><b>5</b><span>2 weeks</span></div>
+          <div class="mult-arrow">→</div>
+          <div class="mult-node"><b>25</b><span>1 month</span></div>
+          <div class="mult-arrow">→</div>
+          <div class="mult-node"><b>125</b><span>6 weeks</span></div>
+          <div class="mult-arrow">→</div>
+          <div class="mult-node mult-node--far"><b>625</b><span>2 months</span></div>
+        </div>
+        <p class="guard__multiply-note" data-i18n="guard.mult.note">Illustrative model — real chains lose people at each hop. Even at a 40% completion rate, one trained Guardian seeds ~40 people in two months, with no platform, budget, or internet.</p>
+      </div>
+
+      <div class="guard__cards reveal">
+        <div class="guard__cards-head">
+          <h3 data-i18n="guard.cards.t">The prebunk cards — built to drop into a group chat</h3>
+          <button class="btn btn--small btn--primary" id="print-cards"><span data-icon="printer"></span><span data-i18n="guard.cards.print">Print / save as PDF</span></button>
+        </div>
+        <div class="prebunk-grid" id="prebunk-grid"></div>
+      </div>
+
+      <div class="guard__partners reveal">
+        <h3 class="plan__inclusion-title" data-i18n="guard.partners.t">Built to plug into the people already doing the work</h3>
+        <p class="guard__partners-note" data-i18n="guard.partners.note">Target partners for piloting and content review (engagement to be established — not current endorsements):</p>
+        <ul class="partner-row">
+          <li><b>Rumor Scanner</b><span>Bangladeshi fact-checking</span></li>
+          <li><b>Dismislab</b><span>Dhaka media research</span></li>
+          <li><b>BRAC</b><span>community reach at national scale</span></li>
+          <li><b>University MIL chairs</b><span>curriculum &amp; credibility</span></li>
+          <li><b>Youth &amp; library networks</b><span>session distribution</span></li>
+        </ul>
+      </div>
+
+      <div class="plan__phases">
+        <article class="phase reveal">
+          <div class="phase__step" data-i18n="phase.now">NOW</div>
+          <h3 data-i18n="phase.now.t">The playable prototype</h3>
+          <p data-i18n="phase.now.d">Five chairs, tiered training, 51 sourced cases, bilingual English/বাংলা, a built-in learning self-assessment and printable prebunk cards — one folder, offline, installable, free.</p>
+        </article>
+        <article class="phase reveal d1">
+          <div class="phase__step" data-i18n="phase.p2">PHASE 2</div>
+          <h3 data-i18n="phase.p2.t">The Guardians toolkit</h3>
+          <p data-i18n="phase.p2.d">Facilitator guides, a light session-tracker so Guardians can log reach, full Bangla story pack, and a text-only low-bandwidth mode.</p>
+        </article>
+        <article class="phase reveal d2">
+          <div class="phase__step" data-i18n="phase.p3">PHASE 3</div>
+          <h3 data-i18n="phase.p3.t">Community story packs</h3>
+          <p data-i18n="phase.p3.d">Guardians document the misinformation circulating in their own region, reviewed by MIL educators and shipped as free local packs. Launch targets: Bangladesh, then South Asia.</p>
+        </article>
+      </div>
+
+      <div class="plan__inclusion reveal">
+        <h3 class="plan__inclusion-title" data-i18n="incl.t">Designed for the youth the internet forgets</h3>
+        <ul class="plan__badges">
+          <li>🇧🇩 Bilingual today: English / বাংলা toggle, built from Bangladesh</li>
+          <li><span data-icon="wifi-off"></span> Works fully offline — one folder, one double-click</li>
+          <li><span data-icon="smartphone"></span> Installable PWA that runs on low-end phones</li>
+          <li><span data-icon="globe"></span> Language packs are plain text files anyone can translate</li>
+          <li><span data-icon="access"></span> Keyboard play, screen-reader labels &amp; reduced-motion mode</li>
+          <li><span data-icon="gift"></span> Open source, free forever — sustainability by design</li>
+        </ul>
+      </div>
+
+      <div class="plan__evidence reveal">
+        <h3 class="plan__inclusion-title" data-i18n="ev.t">Evidence, not vibes</h3>
+        <p data-i18n="ev.sub">Every number on this site is either a cited finding or clearly labelled as a model:</p>
+        <ul class="plan__sources">
+          <li><b>6× faster / 70% more likely to be shared</b> — Vosoughi, Roy &amp; Aral, <i>Science</i> 359 (2018), 126k cascades on Twitter.</li>
+          <li><b>“Angry” weighted 5× a like</b> — internal documents reported in the WSJ’s Facebook Files (2021).</li>
+          <li><b>Likes ≈30×, reposts ≈20× ranking weight</b> — Twitter’s open-sourced recommendation code (2023).</li>
+          <li><b>85% worry about disinformation</b> — UNESCO–Ipsos, 16 countries (2023).</li>
+          <li><b>96% missed the site’s backer</b> — Stanford History Education Group high-school study.</li>
+          <li><b>The Group Chat &amp; all 51 Hall of Lies cases</b> — real, documented events, each with its source; in-game reach numbers are labelled as modelled.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Footer (dark band) ===== -->
+    <div class="band band--dark band--footer">
+      <footer class="footer">
+        <h2 class="footer__title reveal" data-i18n="footer.title">Don’t get played.<br /><span class="glitch footer__accent" data-text="Play your part.">Play your part.</span></h2>
+        <a href="#simulation" class="btn btn--primary btn--big magnetic reveal d1" data-i18n="footer.cta">▶ Run the simulation</a>
+        <div class="footer__meta reveal d2">
+          <p><b>PLAYED</b> is a youth-led media &amp; information literacy program — built in Bangladesh, free and open source, for every group chat on earth.</p>
+          <p class="footer__fine">Simulation posts are fictional recreations of documented misinformation patterns; the Hall of Lies contains only real, publicly documented cases, each with its documenting source. Platform marks are used nominatively to identify where documented cases circulated.</p>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  <script src="js/icons.js?v=2026.1"></script>
+  <script src="js/real-cases.js?v=2026.1"></script>
+  <script src="js/i18n.js?v=2026.1"></script>
+  <script src="js/network.js?v=2026.1"></script>
+  <script src="js/three-scenes.js?v=2026.1"></script>
+  <script src="js/game.js?v=2026.1"></script>
+  <script src="js/main.js?v=2026.1"></script>
+</body>
+</html>
